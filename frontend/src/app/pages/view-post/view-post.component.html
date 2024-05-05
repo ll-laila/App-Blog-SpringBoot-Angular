@@ -1,0 +1,80 @@
+
+<div class="container col-2 col-lg-6 pt-5 rounded-3">
+  <article class="justify-content-center align-items-center ">
+    <div class="card border-0 p-2" *ngIf="postData">
+      <div class="card-body border bg-white p-4 ">
+        <div class="entry-header mb-3">
+          <div class="">
+            <img class="border-0 img-fluid bsb-scale bsb-hover-scale-up small-image p-1" loading="lazy"
+                 src="{{postData.img}}" alt="">
+          </div>
+          <h2 class="card-title entry-title h4 mb-0">
+            <a class="link-dark text-decoration-none" >{{postData.name}}</a>
+          </h2>
+          <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" href="#!">
+            <span class="ms-2 fs-7">Posted By : {{postData.postedBy}} | Posted On : {{postData.date | date:'medium'}}</span>
+          </a>
+        </div>
+        <p class="card-text entry-summary text-secondary mb-3">
+          {{postData.content}}
+        </p>
+      </div>
+
+      <div class="card-footer border border-top-0 bg-light p-4">
+        <ul class="entry-meta list-unstyled d-flex align-items-center m-0">
+          <button  type="button" class="btn" (click)="likePost()">
+            <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" >
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+              </svg>
+              <span class="ms-2 fs-7" >{{postData.likeCount}}</span>
+            </a>
+          </button>
+          <span class="px-3"></span>
+          <button  type="button" class="btn">
+            <a class="link-secondary text-decoration-none d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+              </svg>
+              <span class="ms-2 fs-7">{{postData.viewCount}}</span>
+            </a>
+          </button>
+          <span class="px-3"></span>
+        </ul>
+      </div>
+    </div>
+  </article>
+  <hr/>
+  <h4 class="p-2">Publish Your Comment :</h4>
+  <div class="container p-4">
+  <form  *ngIf="commentForm"  [formGroup]="commentForm">
+    <div class="mb-3">
+      <label class="form-label">Content : </label>
+      <textarea class="form-control" formControlName="content" placeholder="Leave a comment here" style="height: 100px"></textarea>
+    </div>
+    <div class="mb-3">
+      <label class="form-label">Posted By :</label>
+      <input type="text" class="form-control"  formControlName="postedBy" >
+    </div>
+    <button type="submit" class="btn btn-primary" (click)="publishComment()">Send</button>
+  </form>
+  </div>
+
+    <div *ngIf="comments" class="card border-0 mb-3 pt-2" style="max-width: 85rem;">
+      <div class="card-header p-2"><h4>Comments</h4></div>
+      <div class="card-body">
+        <div class="container p-2" *ngFor="let comment of comments">
+         <h6 class="card-title">{{comment.postedBy}}</h6>
+          <p class="text-secondary text-decoration-none d-flex align-items-center">{{comment.createdAt | date:'medium'}}</p>
+         <span class="card-text">{{comment.content}}</span><hr/>
+        </div>
+      </div>
+    </div>
+
+
+</div>
+
+
+
+

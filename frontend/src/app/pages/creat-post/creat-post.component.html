@@ -1,0 +1,43 @@
+<div class="container-lg pt-1 pb-3">
+  <div class="container-lg ">
+  <form *ngIf="postForm"  [formGroup]="postForm">
+
+    <div class="mb-12 p-2">
+      <label  class="form-label">Name</label>
+      <input type="text" class="form-control"
+         formControlName="name"
+      >
+    </div>
+
+    <div class="mb-12 p-2">
+    <label  class="form-label">Image</label>
+      <input type="text" class="form-control"
+             formControlName="img">
+    </div>
+
+    <div class="mb-12 p-2">
+    <label  class="form-label">Content</label>
+      <textarea class="form-control" formControlName="content" rows="3">
+      </textarea>
+    </div>
+
+    <div class="mb-12 p-2">
+      <label  class="form-label">Posted By</label>
+      <input type="text" class="form-control"
+             formControlName="postedBy">
+    </div>
+
+    <div class="mb-12 p-2">
+      <label  class="form-label">Tags</label>
+      <input type="text" class="form-control"
+             formControlName="tags" placeholder="tage1,tag2,...">
+    </div>
+
+    <div class="mb-12 p-1">
+        <button class="btn btn-primary" type="submit"
+        [disabled]="!postForm.valid"
+        (click)="createPost()">Create post</button>
+    </div>
+  </form>
+</div>
+</div>

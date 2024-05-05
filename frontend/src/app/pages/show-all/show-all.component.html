@@ -1,0 +1,61 @@
+
+      <div class="container col-2 col-lg-6 pt-5 rounded-3">
+        <article class="justify-content-center align-items-center ">
+            <div class="card border-0 p-2" *ngFor="let item of allPosts">
+              <div class="card-body border bg-white p-4 ">
+                <div class="entry-header mb-3">
+                  <div class="">
+                    <img class="border-0 img-fluid bsb-scale bsb-hover-scale-up small-image p-1" loading="lazy"
+                         src="{{item.img}}" alt="">
+                  </div>
+                  <h2 class="card-title entry-title h4 mb-0">
+                    <a class="link-dark text-decoration-none" >{{item.name}}</a>
+                  </h2>
+                  <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" href="#!">
+                    <span class="ms-2 fs-7">Posted By : {{item.postedBy}} | Posted On : {{item.date | date:'medium'}}</span>
+                  </a>
+                </div>
+                <p class="card-text entry-summary text-secondary mb-3">
+                    {{ item.content.length > 600 ? item.substr(0,600) + '...' : item.content}}
+                </p>
+              </div>
+
+              <div class="card-footer border border-top-0 bg-light p-4">
+                <ul class="entry-meta list-unstyled d-flex align-items-center m-0">
+                  <button  type="button" class="btn" >
+                    <a class="fs-7 link-secondary text-decoration-none d-flex align-items-center" href="#!">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart-fill" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                      </svg>
+                      <span class="ms-2 fs-7">{{item.likeCount}}</span>
+                    </a>
+                  </button>
+                    <span class="px-3"></span>
+                  <button  type="button" class="btn">
+                    <a class="link-secondary text-decoration-none d-flex align-items-center" >
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-eye-fill" viewBox="0 0 16 16">
+                        <path d="M10.5 8a2.5 2.5 0 1 1-5 0 2.5 2.5 0 0 1 5 0"/>
+                        <path d="M0 8s3-5.5 8-5.5S16 8 16 8s-3 5.5-8 5.5S0 8 0 8m8 3.5a3.5 3.5 0 1 0 0-7 3.5 3.5 0 0 0 0 7"/>
+                      </svg>
+                      <span class="ms-2 fs-7">{{item.viewCount}}</span>
+                    </a>
+                  </button>
+                  <span class="px-3"></span>
+                  <a  type="button" class="btn" routerLink="/view-post/{{item.id}}">
+                    <a class="link-secondary text-decoration-none d-flex align-items-center">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-arrows-angle-expand" viewBox="0 0 16 16">
+                        <path fill-rule="evenodd" d="M5.828 10.172a.5.5 0 0 0-.707 0l-4.096 4.096V11.5a.5.5 0 0 0-1 0v3.975a.5.5 0 0 0 .5.5H4.5a.5.5 0 0 0 0-1H1.732l4.096-4.096a.5.5 0 0 0 0-.707m4.344-4.344a.5.5 0 0 0 .707 0l4.096-4.096V4.5a.5.5 0 1 0 1 0V.525a.5.5 0 0 0-.5-.5H11.5a.5.5 0 0 0 0 1h2.768l-4.096 4.096a.5.5 0 0 0 0 .707"/>
+                      </svg>
+                      <span class="ms-2 fs-7">View Post</span>
+                    </a>
+                  </a>
+                </ul>
+              </div>
+            </div>
+
+          </article>
+        </div>
+
+
+
+
